@@ -1,1 +1,8 @@
-{}
+{
+  "cartItems": "Your Cart Items",
+  "price": "Price: ${price}",
+  "subtotal": "Subtotal: ${totalAmount}",
+  "continueShopping": "Continue Shopping",
+  "checkout": "Checkout",
+  "emptyShoppingCart": "Your Shopping Cart is Empty"
+}

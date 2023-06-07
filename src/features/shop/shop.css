@@ -1,0 +1,10 @@
+.shopTitle {
+  display: flex;
+  justify-content: center;
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
