@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .productImage {
@@ -25,4 +26,15 @@
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 15px;
+}
+
+.productName {
+  margin: 0;
+  padding: 0;
+}
+
+.productPrize {
+  margin-top: 0;
+  padding: 0;
+  color: rosybrown;
 }
