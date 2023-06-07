@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import "./product.css";
-import { ShopContext } from "../../../context/shopContext";
 import { useTranslation } from "react-i18next";
+
+import { ShopContext } from "../../../context/shopContext";
+import "./product.css";
 
 export interface IProduct {
   id: number;

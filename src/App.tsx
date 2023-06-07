@@ -1,7 +1,8 @@
 import React from "react";
+
 import "./App.css";
-import RootNavigation from "./navigation";
 import { ShopContextProvider } from "./context/shopContext";
+import RootNavigation from "./navigation";
 import "../src/localization";
 import "../src/config/i18n";
 

@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import CartItem from "./CartItem";
-import { PRODUCTS } from "../shop/helper";
-import { ShopContext } from "../../context/shopContext";
-import { useNavigate } from "react-router";
-import "./cart.css";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+
+import CartItem from "./CartItem";
+import { ShopContext } from "../../context/shopContext";
+import { PRODUCTS } from "../shop/helper";
+import "./cart.css";
 
 const Cart: React.FunctionComponent = () => {
   const { t } = useTranslation("cart");
@@ -23,6 +24,7 @@ const Cart: React.FunctionComponent = () => {
           if (cartItems[product.id] !== 0) {
             return (
               <CartItem
+                key={`cartItem_${product.id}_${index}`}
                 id={product.id}
                 price={product.price}
                 productImage={product.productImage}
