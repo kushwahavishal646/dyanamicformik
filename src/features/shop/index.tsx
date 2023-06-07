@@ -1,8 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+
 import { PRODUCTS } from "./helper";
 import Product from "./Product";
+
 import "./shop.css";
-import { useTranslation } from "react-i18next";
 
 const Shop: React.FunctionComponent = () => {
   const { t } = useTranslation();
@@ -14,6 +16,7 @@ const Shop: React.FunctionComponent = () => {
       <div className="products">
         {PRODUCTS.map((item, index) => (
           <Product
+            key={`cartItem_${item.id}_${index}`}
             id={item.id}
             productName={item.productName}
             price={item.price}

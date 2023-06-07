@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import "./product.css";
-import { ShopContext } from "../../../context/shopContext";
 import { useTranslation } from "react-i18next";
+
+import { ShopContext } from "../../../context/shopContext";
+import "./product.css";
 
 export interface IProduct {
   id: number;
@@ -24,12 +25,12 @@ const Product: React.FunctionComponent<IProduct> = (props) => {
         className="productImage"
       />
       <div className="description">
-        <p>
+        <p className="productName">
           <b>{props.productName}</b>
         </p>
-        <p>
+        <h5 className="productPrize">
           <b>${props.price}</b>
-        </p>
+        </h5>
         <button className="addToCartBttn" onClick={() => addToCart(props.id)}>
           {t("addToCart")} {cartItemCount > 0 && <> ({cartItemCount})</>}
         </button>

@@ -1,6 +1,7 @@
-import { ShoppingCart } from "phosphor-react";
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { ShoppingCart } from "phosphor-react";
 import "./styles.css";
 
 const Navbar: React.FunctionComponent = () => {

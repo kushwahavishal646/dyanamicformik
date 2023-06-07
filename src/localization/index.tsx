@@ -1,7 +1,7 @@
-import common_en from "./en/common.json";
-import shop_en from "./en/shop.json";
 import cart_en from "./en/cart.json";
 import chekout_en from "./en/checkout.json";
+import common_en from "./en/common.json";
+import shop_en from "./en/shop.json";
 
 const langSetupOptions = {
   resources: {

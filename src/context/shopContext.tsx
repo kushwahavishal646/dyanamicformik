@@ -1,12 +1,17 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
+
 import { PRODUCTS } from "../features/shop/helper";
 
 interface IShopContextProvider {
   children: React.ReactNode;
 }
 
+interface ICart {
+  [index: number]: number;
+}
+
 interface IShopContextType {
-  cartItems: number[];
+  cartItems: ICart;
   addToCart: (itemId: number) => void;
   updateCartItemCount: (newAmount: number, itemId: number) => void;
   removeFromCart: (itemId: number) => void;
@@ -19,7 +24,7 @@ export const ShopContext = createContext<IShopContextType>(
 );
 
 const getDefaultCart = () => {
-  let cart = [];
+  let cart: ICart = [];
   for (let i = 1; i < PRODUCTS.length + 1; i++) {
     cart[i] = 0;
   }

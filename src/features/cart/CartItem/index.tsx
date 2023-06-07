@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
+
 import { ShopContext } from "../../../context/shopContext";
 import { IProduct } from "../../shop/Product";
+
 import "./cartItem.css";
-import { useTranslation } from "react-i18next";
 
 const CartItem: React.FunctionComponent<IProduct> = (props) => {
   const { t } = useTranslation("cart");
