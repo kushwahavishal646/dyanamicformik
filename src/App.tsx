@@ -1,11 +1,9 @@
-import React from 'react';
-import './App.css';
-import RootNavigation from './navigation';
+import React from "react";
+import "./App.css";
+import RootNavigation from "./navigation";
 
 const App: React.FunctionComponent = () => {
-  return (
-    <RootNavigation />
-  );
-}
+  return <RootNavigation />;
+};
 
 export default App;
