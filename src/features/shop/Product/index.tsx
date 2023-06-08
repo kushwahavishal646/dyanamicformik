@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 
-import { ShopContext } from "../../../context/shopContext";
+import { addToCart } from "../../../redux/action";
+import { useTypedSelector } from "../../../store";
 import "./product.css";
-
 export interface IProduct {
   id: number;
   productName: string;
@@ -12,10 +13,15 @@ export interface IProduct {
 }
 
 const Product: React.FunctionComponent<IProduct> = (props) => {
+  const dispatch = useDispatch();
   const { t } = useTranslation("shop");
-  const { addToCart, cartItems } = useContext(ShopContext);
 
-  const cartItemCount = cartItems[props.id];
+  const shoppingCartState = useTypedSelector((state) => state.shoppingCart);
+  const cartItemCount = shoppingCartState.cartItems[props.id];
+
+  const addItemToCart = () => {
+    dispatch(addToCart({ itemId: props.id }));
+  };
 
   return (
     <div className="productContainer">
@@ -31,7 +37,7 @@ const Product: React.FunctionComponent<IProduct> = (props) => {
         <h5 className="productPrize">
           <b>${props.price}</b>
         </h5>
-        <button className="addToCartBttn" onClick={() => addToCart(props.id)}>
+        <button className="addToCartBttn" onClick={addItemToCart}>
           {t("addToCart")} {cartItemCount > 0 && <> ({cartItemCount})</>}
         </button>
       </div>

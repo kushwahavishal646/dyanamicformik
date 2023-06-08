@@ -1,18 +1,22 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import CartItem from "./CartItem";
-import { ShopContext } from "../../context/shopContext";
+import { checkout } from "../../redux/action";
+import { useTypedSelector } from "../../store";
 import { PRODUCTS } from "../shop/helper";
 import "./cart.css";
 
 const Cart: React.FunctionComponent = () => {
-  const { t } = useTranslation("cart");
-  const { cartItems, getTotalCartAmount, checkout } = useContext(ShopContext);
-  const totalAmount = getTotalCartAmount();
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation("cart");
+
+  const shoppingCartState = useTypedSelector((state) => state.shoppingCart);
+  const totalAmount = shoppingCartState.totalAmountCart;
+  const cartItems = shoppingCartState.cartItems;
 
   return (
     <div className="cart">
@@ -41,7 +45,7 @@ const Cart: React.FunctionComponent = () => {
           <button onClick={() => navigate("/")}>{t("continueShopping")}</button>
           <button
             onClick={() => {
-              checkout();
+              dispatch(checkout());
               navigate("/checkout");
             }}
           >
