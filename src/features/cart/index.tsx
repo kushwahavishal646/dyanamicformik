@@ -19,43 +19,50 @@ const Cart: React.FunctionComponent = () => {
   const cartItems = shoppingCartState.cartItems;
 
   return (
-    <div className="cart">
-      <div className="header">
-        <h1>{t("cartItems")}</h1>
-      </div>
+    <>
       <div className="cart">
-        {PRODUCTS.map((product, index) => {
-          if (cartItems[product.id] !== 0) {
-            return (
-              <CartItem
-                key={`cartItem_${product.id}_${index}`}
-                id={product.id}
-                price={product.price}
-                productImage={product.productImage}
-                productName={product.productName}
-              />
-            );
-          }
-          return undefined;
-        })}
-      </div>
-      {totalAmount > 0 ? (
-        <div className="checkout">
-          <h2>{t("subtotal").replace("{totalAmount}", `${totalAmount}`)}</h2>
-          <button onClick={() => navigate("/")}>{t("continueShopping")}</button>
-          <button
-            onClick={() => {
-              dispatch(checkout());
-              navigate("/checkout");
-            }}
-          >
-            {t("checkout")}
-          </button>
+        <div className="header">
+          <h1>{t("cartItems")}</h1>
         </div>
-      ) : (
-        <h1>{t("emptyShoppingCart")}</h1>
-      )}
-    </div>
+        <div className="cart">
+          {PRODUCTS.map((product, index) => {
+            if (cartItems[product.id] !== 0) {
+              return (
+                <CartItem
+                  key={`cartItem_${product.id}_${index}`}
+                  id={product.id}
+                  price={product.price}
+                  productImage={product.productImage}
+                  productName={product.productName}
+                />
+              );
+            }
+            return undefined;
+          })}
+        </div>
+        {totalAmount > 0 ? (
+          <>
+            <h2>{t("subtotal").replace("{totalAmount}", `${totalAmount}`)}</h2>
+            <div className="checkout">
+              <button onClick={() => navigate("/")}>
+                {t("continueShopping")}
+              </button>
+              <button
+                onClick={() => {
+                  dispatch(checkout());
+                  navigate("/checkout");
+                }}
+              >
+                {t("checkout")}
+              </button>
+            </div>
+          </>
+        ) : (
+          <h1>{t("emptyShoppingCart")}</h1>
+        )}
+      </div>
+      <div className="lowerSpace" />
+    </>
   );
 };
 
