@@ -44,10 +44,10 @@ export const modifyCart = (
       [itemId]: cartItems[itemId] - 1,
     };
   }
-  if (operation === CartOperationType.UPDATE) {
+  if (operation === CartOperationType.UPDATE && !!newItemCount) {
     updatedCartItem = {
       ...cartItems,
-      [itemId]: newItemCount ?? 0,
+      [itemId]: newItemCount,
     };
   }
   const totalAmount = getTotalCartAmount(updatedCartItem);

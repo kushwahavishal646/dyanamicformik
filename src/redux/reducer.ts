@@ -38,7 +38,8 @@ const ShoppingCartReducer: Reducer<IShoppingCartState, ShoppingCartActions> = (
       return modifyCart(
         action.payload.itemId,
         state.cartItems,
-        CartOperationType.UPDATE
+        CartOperationType.UPDATE,
+        action.payload.newItemCount
       );
     case ShoppingCartActionTypes.CHECKOUT:
       return state;
