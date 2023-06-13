@@ -8,6 +8,7 @@ const Navbar: React.FunctionComponent = () => {
   return (
     <div className="navbar">
       <div className="links">
+        <Link to="/configRendering">Config Rendering</Link>
         <Link to="/">Shop</Link>
         <Link to="/cart">
           <ShoppingCart size={32} />

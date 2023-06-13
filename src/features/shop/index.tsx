@@ -12,7 +12,7 @@ const Shop: React.FunctionComponent = () => {
   const classes = useStyles();
 
   return (
-    <Box>
+    <>
       <Box sx={classes.shopTitle}>
         <h1>{t("companyName")}</h1>
       </Box>
@@ -27,7 +27,7 @@ const Shop: React.FunctionComponent = () => {
           />
         ))}
       </Box>
-    </Box>
+    </>
   );
 };
 
