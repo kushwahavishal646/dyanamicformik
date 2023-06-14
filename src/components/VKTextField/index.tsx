@@ -11,6 +11,7 @@ const VKTextField: React.FunctionComponent<IFormElementsProps> = (props) => {
       name={props.item.name}
       value={props.fields[props.item.name] ?? ""}
       onChange={(event) => props.handleFieldChange(event, props.item.name)}
+      sx={{ marginY: 2 }}
     />
   );
 };

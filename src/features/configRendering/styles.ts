@@ -1,14 +1,10 @@
-import theme from "../../config/theme";
-
 const useStyles = () => ({
-  formControl: {
-    margin: theme.spacing(1),
+  container: {
+    width: 550,
     display: "flex",
+    flexDirection: "column",
+    marginX: 60,
     marginY: 5,
-  },
-  chips: {
-    display: "flex",
-    flexWrap: "wrap",
   },
 });
 

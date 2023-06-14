@@ -33,9 +33,12 @@ export interface IItem {
   sx?: object;
 }
 
-export interface IFormElementsProps {
+export interface IInputProps {
   key: string;
   item: IItem;
+}
+
+export interface IFormElementsProps extends IInputProps {
   fields: Record<string, any>;
   handleFieldChange: (
     event:

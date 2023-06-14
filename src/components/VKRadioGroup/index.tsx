@@ -1,22 +1,13 @@
 import React from "react";
 
-import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-} from "@mui/material";
+import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 
-import useStyles from "./styles";
 import { IFormElementsProps } from "../../features/configRendering/FormElements";
 
 const VKRadioGroup: React.FunctionComponent<IFormElementsProps> = (props) => {
-  const classes = useStyles();
-
   return (
-    <FormControl component="fieldset" sx={classes.formControl}>
-      <FormLabel component="legend">{props.item.label}</FormLabel>
+    <>
+      <h5>{props.item.label}</h5>
       <RadioGroup
         aria-label={props.item.name}
         name={props.item.name}
@@ -32,7 +23,7 @@ const VKRadioGroup: React.FunctionComponent<IFormElementsProps> = (props) => {
           />
         ))}
       </RadioGroup>
-    </FormControl>
+    </>
   );
 };
 
