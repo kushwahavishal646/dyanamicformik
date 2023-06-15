@@ -19,7 +19,7 @@ interface IInputLabelProps {
 export interface IItem {
   label: string;
   name: string;
-  fieldType: string;
+  fieldtype: string;
   id: string;
   type?: string;
   margin?: "none" | "normal" | "dense" | undefined;
@@ -55,7 +55,7 @@ const FormElements: React.FunctionComponent<IFormElementsProps> = (props) => {
     multiselect: <VKMultiselect {...props} />,
   };
 
-  return <>{formComponent[props.item.fieldType]}</>;
+  return <>{formComponent[props.item.fieldtype]}</>;
 };
 
 export default FormElements;

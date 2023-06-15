@@ -21,16 +21,18 @@ const ConfigRendering: React.FunctionComponent = () => {
   };
 
   return (
-    <Box sx={classes.container}>
-      {configFields.map((item, index) => (
-        <FormElements
-          {...item}
-          key={`${index}-${item.key}`}
-          fields={fields}
-          handleFieldChange={handleFieldChange}
-        />
-      ))}
-    </Box>
+    !!configFields && (
+      <Box sx={classes.container}>
+        {configFields.map((item, index) => (
+          <FormElements
+            {...item}
+            key={`${index}-${item.key}`}
+            fields={fields}
+            handleFieldChange={handleFieldChange}
+          />
+        ))}
+      </Box>
+    )
   );
 };
 

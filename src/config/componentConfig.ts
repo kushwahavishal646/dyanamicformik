@@ -30,7 +30,7 @@ export const configFields: IInputProps[] = [
     item: {
       label: "Email Address",
       name: "email",
-      fieldType: "text",
+      fieldtype: "text",
       id: "email",
       margin: "dense",
       type: "email",
@@ -43,7 +43,7 @@ export const configFields: IInputProps[] = [
     item: {
       label: "Phone Number",
       name: "phone",
-      fieldType: "text",
+      fieldtype: "text",
       id: "phone",
       margin: "dense",
       type: "tel",
@@ -55,7 +55,7 @@ export const configFields: IInputProps[] = [
     item: {
       label: "Time",
       name: "time",
-      fieldType: "text",
+      fieldtype: "text",
       id: "time",
       margin: "dense",
       type: "time",
@@ -73,7 +73,7 @@ export const configFields: IInputProps[] = [
     item: {
       label: "Beachfront Food Service",
       name: "foodService",
-      fieldType: "radio",
+      fieldtype: "radio",
       id: "foodService",
       options: yesNoOptions,
     },
@@ -83,7 +83,7 @@ export const configFields: IInputProps[] = [
     item: {
       label: "Beachfront Cocktail Service",
       name: "cocktailService",
-      fieldType: "radio",
+      fieldtype: "radio",
       id: "cocktailService",
       options: yesNoOptions,
     },
@@ -93,7 +93,7 @@ export const configFields: IInputProps[] = [
     item: {
       label: "Accommodations",
       name: "accommodations",
-      fieldType: "multiselect",
+      fieldtype: "multiselect",
       id: "accommodations",
       options: accommodationList,
     },
