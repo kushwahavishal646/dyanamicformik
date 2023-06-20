@@ -48,6 +48,9 @@ export const configFields: IInputProps[] = [
       margin: "dense",
       type: "tel",
       fullWidth: true,
+      inputProps: {
+        maxLength: 10,
+      },
     },
   },
   {

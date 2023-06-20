@@ -26,6 +26,7 @@ export interface IItem {
   InputLabelProps?: IInputLabelProps;
   inputProps?: {
     step?: number;
+    maxLength?: number;
   };
   fullWidth?: boolean;
   autoFocus?: boolean;
