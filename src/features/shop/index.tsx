@@ -1,19 +1,22 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { Box } from "@mui/material";
+
 import { PRODUCTS } from "./helper";
 import Product from "./Product";
-import "./shop.css";
+import useStyles from "./style";
 
 const Shop: React.FunctionComponent = () => {
   const { t } = useTranslation();
+  const classes = useStyles();
 
   return (
-    <div className="shop">
-      <div className="shopTitle">
+    <Box>
+      <Box sx={classes.shopTitle}>
         <h1>{t("companyName")}</h1>
-      </div>
-      <div className="products">
+      </Box>
+      <Box sx={[classes.products]}>
         {PRODUCTS.map((item, index) => (
           <Product
             key={`cartItem_${item.id}_${index}`}
@@ -23,8 +26,8 @@ const Shop: React.FunctionComponent = () => {
             productImage={item.productImage}
           />
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
