@@ -3,11 +3,11 @@ import { useTranslation } from "react-i18next";
 
 import { PRODUCTS } from "./helper";
 import Product from "./Product";
-
 import "./shop.css";
 
 const Shop: React.FunctionComponent = () => {
   const { t } = useTranslation();
+
   return (
     <div className="shop">
       <div className="shopTitle">
