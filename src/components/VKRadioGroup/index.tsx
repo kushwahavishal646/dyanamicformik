@@ -1,18 +1,27 @@
 import React from "react";
 
-import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import { FormControlLabel, Radio, RadioGroup, Typography } from "@mui/material";
 
+import useStyles from "./styles";
 import { IFormElementsProps } from "../../features/configRendering/FormElements";
 
 const VKRadioGroup: React.FunctionComponent<IFormElementsProps> = (props) => {
+  const classes = useStyles();
+
+  const handleFieldBlur = () =>
+    props.formikData.setFieldTouched(props.item.name);
+
   return (
     <>
       <h5>{props.item.label}</h5>
       <RadioGroup
         aria-label={props.item.name}
         name={props.item.name}
-        value={props.fields[props.item.name] ?? ""}
-        onChange={(event) => props.handleFieldChange(event, props.item.name)}
+        value={eval(`props.formikData.values.${props.item.name}`) ?? ""}
+        onChange={(event) =>
+          props.formikData.setFieldValue(props.item.name, event.target.value)
+        }
+        onBlur={handleFieldBlur}
       >
         {props.item.options?.map((option) => (
           <FormControlLabel
@@ -23,6 +32,11 @@ const VKRadioGroup: React.FunctionComponent<IFormElementsProps> = (props) => {
           />
         ))}
       </RadioGroup>
+      {!!eval(`props.formikData.errors.${props.item.name}`) && (
+        <Typography sx={[classes.text, classes.error]}>
+          {eval(`props.formikData.errors.${props.item.name}`)}
+        </Typography>
+      )}
     </>
   );
 };

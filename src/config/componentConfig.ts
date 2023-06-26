@@ -37,6 +37,20 @@ export const configFields: IInputProps[] = [
       fullWidth: true,
       autoFocus: true,
     },
+    fieldFormikElement: {
+      initialValue: "",
+      validationType: "string",
+      fieldValidation: [
+        {
+          type: "email",
+          params: ["Invalid email address"],
+        },
+        {
+          type: "required",
+          params: ["Email is required"],
+        },
+      ],
+    },
   },
   {
     key: "phone",
@@ -51,6 +65,17 @@ export const configFields: IInputProps[] = [
       inputProps: {
         maxLength: 10,
       },
+    },
+    fieldFormikElement: {
+      initialValue: "",
+      validationType: "string",
+      fieldValidation: [
+        {
+          type: "matches",
+          params: [/^[6-9][0-9]{9}$/, "Invalid phone number"],
+        },
+        { type: "required", params: ["Phone number is required"] },
+      ],
     },
   },
   {
@@ -70,6 +95,9 @@ export const configFields: IInputProps[] = [
         step: 1800,
       },
     },
+    fieldFormikElement: {
+      initialValue: "",
+    },
   },
   {
     key: "foodService",
@@ -79,6 +107,53 @@ export const configFields: IInputProps[] = [
       fieldtype: "radio",
       id: "foodService",
       options: yesNoOptions,
+    },
+    fieldFormikElement: {
+      initialValue: undefined,
+      validationType: "string",
+      fieldValidation: [{ type: "string", params: ["Option is required"] }],
+    },
+  },
+  {
+    key: "amount",
+    item: {
+      label: "Amount",
+      name: "amount",
+      fieldtype: "text",
+      id: "amount",
+      type: "number",
+      fullWidth: true,
+    },
+    fieldFormikElement: {
+      initialValue: "",
+      validationType: "number",
+      fieldValidation: [
+        {
+          type: "required",
+          params: ["Amount is required"],
+        },
+        {
+          type: "when",
+          params: [
+            "foodService",
+            {
+              is: "yes",
+              then: [
+                {
+                  type: "min",
+                  params: [200],
+                },
+              ],
+              otherwise: [
+                {
+                  type: "min",
+                  params: [100],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
   },
   {
@@ -90,6 +165,11 @@ export const configFields: IInputProps[] = [
       id: "cocktailService",
       options: yesNoOptions,
     },
+    fieldFormikElement: {
+      initialValue: undefined,
+      validationType: "string",
+      fieldValidation: [{ type: "string", params: ["Option is required"] }],
+    },
   },
   {
     key: "accommodations",
@@ -99,6 +179,11 @@ export const configFields: IInputProps[] = [
       fieldtype: "multiselect",
       id: "accommodations",
       options: accommodationList,
+    },
+    fieldFormikElement: {
+      initialValue: [],
+      validationType: "string",
+      fieldValidation: [{ type: "string", params: ["Option is required"] }],
     },
   },
 ];

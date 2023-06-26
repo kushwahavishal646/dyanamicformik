@@ -34,8 +34,10 @@ const VKMultiselect: React.FunctionComponent<IFormElementsProps> = (props) => {
         labelId={`label-${props.item.id}`}
         id={props.item.id}
         multiple
-        value={props.fields[props.item.name] ?? []}
-        onChange={(event) => props.handleFieldChange(event, props.item.name)}
+        value={eval(`props.formikData.values.${props.item.name}`) ?? []}
+        onChange={(event) =>
+          props.formikData.setFieldValue(props.item.name, event.target.value)
+        }
         input={<Input id={`select-chip-${props.item.id}`} />}
         renderValue={(selected: string[]) => (
           <Box sx={classes.chips}>

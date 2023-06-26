@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SelectChangeEvent } from "@mui/material";
+import { FormikProps } from "formik";
 
 import VKMultiselect from "../../../components/VKMultiselect";
 import VKRadioGroup from "../../../components/VKRadioGroup";
@@ -14,6 +14,17 @@ interface IRadioOption {
 
 interface IInputLabelProps {
   shrink?: boolean;
+}
+
+export interface IFormikValidation {
+  type: string;
+  params: any[];
+}
+
+export interface IFieldFormikElement {
+  initialValue: any;
+  validationType?: "string" | "number" | "boolean";
+  fieldValidation?: IFormikValidation[];
 }
 
 export interface IItem {
@@ -37,16 +48,11 @@ export interface IItem {
 export interface IInputProps {
   key: string;
   item: IItem;
+  fieldFormikElement?: IFieldFormikElement;
 }
 
 export interface IFormElementsProps extends IInputProps {
-  fields: Record<string, any>;
-  handleFieldChange: (
-    event:
-      | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-      | SelectChangeEvent<any>,
-    type: string
-  ) => void;
+  formikData: FormikProps<Record<string, any>>;
 }
 
 const FormElements: React.FunctionComponent<IFormElementsProps> = (props) => {
@@ -55,7 +61,6 @@ const FormElements: React.FunctionComponent<IFormElementsProps> = (props) => {
     radio: <VKRadioGroup {...props} />,
     multiselect: <VKMultiselect {...props} />,
   };
-
   return <>{formComponent[props.item.fieldtype]}</>;
 };
 
