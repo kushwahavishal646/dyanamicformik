@@ -43,13 +43,17 @@ const ConfigRendering: React.FunctionComponent = () => {
   return (
     !!configFields && (
       <Box sx={classes.container}>
-        {configFields.map((item, index) => (
-          <FormElements
-            {...item}
-            key={`${index}-${item.key}`}
-            formikData={formikData}
-          />
-        ))}
+        {configFields.map(
+          (item, index) =>
+            (item.renderCondition === undefined ||
+              eval(item.renderCondition)) && (
+              <FormElements
+                {...item}
+                key={`${index}-${item.key}`}
+                formikData={formikData}
+              />
+            )
+        )}
       </Box>
     )
   );

@@ -1,32 +1,34 @@
 import React from "react";
 
-import { TextField } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 
+import useStyles from "./styles";
 import { IFormElementsProps } from "../../features/configRendering/FormElements";
 
 const VKTextField: React.FunctionComponent<IFormElementsProps> = (props) => {
-  const handleFieldBlur = () =>
-    props.formikData.setFieldTouched(props.item.name);
+  const classes = useStyles();
+  const { formikData, item } = props;
+
+  const handleFieldBlur = () => formikData.setFieldTouched(item.name);
 
   return (
-    <TextField
-      {...props.item}
-      value={eval(`props.formikData.values.${props.item.name}`) ?? ""}
-      onChange={(event) =>
-        props.formikData.setFieldValue(props.item.name, event.target.value)
-      }
-      onBlur={handleFieldBlur}
-      error={
-        eval(`props.formikData.touched.${props.item.name}`) &&
-        !!eval(`props.formikData.errors.${props.item.name}`)
-      }
-      helperText={
-        eval(`props.formikData.touched.${props.item.name}`)
-          ? eval(`props.formikData.errors.${props.item.name}`)
-          : ""
-      }
-      sx={{ marginY: 2 }}
-    />
+    <>
+      <TextField
+        {...item}
+        value={formikData.values[item.name] ?? ""}
+        onChange={(event) =>
+          formikData.setFieldValue(item.name, event.target.value)
+        }
+        onBlur={handleFieldBlur}
+        error={formikData.touched[item.name] && !!formikData.errors[item.name]}
+        sx={{ marginY: 2 }}
+      />
+      {!!formikData.touched[item.name] && !!formikData.errors[item.name] && (
+        <Typography sx={[classes.text, classes.error]}>
+          {`${formikData.errors[item.name]}`}
+        </Typography>
+      )}
+    </>
   );
 };
 

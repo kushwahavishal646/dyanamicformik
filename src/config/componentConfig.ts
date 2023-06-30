@@ -116,6 +116,7 @@ export const configFields: IInputProps[] = [
   },
   {
     key: "amount",
+    renderCondition: `formikData.values?.foodService === "yes" `,
     item: {
       label: "Amount",
       name: "amount",
@@ -158,6 +159,7 @@ export const configFields: IInputProps[] = [
   },
   {
     key: "cocktailService",
+    renderCondition: `formikData.values?.foodService === "yes" `,
     item: {
       label: "Beachfront Cocktail Service",
       name: "cocktailService",
@@ -173,6 +175,7 @@ export const configFields: IInputProps[] = [
   },
   {
     key: "accommodations",
+    renderCondition: `formikData.values?.foodService === "yes" `,
     item: {
       label: "Accommodations",
       name: "accommodations",

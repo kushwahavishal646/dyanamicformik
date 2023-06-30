@@ -48,6 +48,7 @@ export interface IItem {
 export interface IInputProps {
   key: string;
   item: IItem;
+  renderCondition?: string;
   fieldFormikElement?: IFieldFormikElement;
 }
 

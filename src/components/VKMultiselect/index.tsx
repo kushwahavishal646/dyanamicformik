@@ -15,6 +15,7 @@ import { IFormElementsProps } from "../../features/configRendering/FormElements"
 
 const VKMultiselect: React.FunctionComponent<IFormElementsProps> = (props) => {
   const classes = useStyles();
+  const { formikData, item } = props;
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -29,16 +30,16 @@ const VKMultiselect: React.FunctionComponent<IFormElementsProps> = (props) => {
 
   return (
     <FormControl sx={classes.formControl}>
-      <FormLabel id="multiple-select-label">{props.item.label}</FormLabel>
+      <FormLabel id="multiple-select-label">{item.label}</FormLabel>
       <Select
-        labelId={`label-${props.item.id}`}
-        id={props.item.id}
+        labelId={`label-${item.id}`}
+        id={item.id}
         multiple
-        value={eval(`props.formikData.values.${props.item.name}`) ?? []}
+        value={formikData.values[item.name] ?? []}
         onChange={(event) =>
-          props.formikData.setFieldValue(props.item.name, event.target.value)
+          formikData.setFieldValue(item.name, event.target.value)
         }
-        input={<Input id={`select-chip-${props.item.id}`} />}
+        input={<Input id={`select-chip-${item.id}`} />}
         renderValue={(selected: string[]) => (
           <Box sx={classes.chips}>
             {selected.map((value: string) => (
@@ -48,7 +49,7 @@ const VKMultiselect: React.FunctionComponent<IFormElementsProps> = (props) => {
         )}
         MenuProps={MenuProps}
       >
-        {props.item.options?.map((option) => (
+        {item.options?.map((option) => (
           <MenuItem key={option.key} value={option.label}>
             {option.label}
           </MenuItem>
