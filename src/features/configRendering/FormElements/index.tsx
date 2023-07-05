@@ -42,6 +42,7 @@ export interface IItem {
   fullWidth?: boolean;
   autoFocus?: boolean;
   options?: IRadioOption[];
+  isMultiSelect?: boolean;
   sx?: object;
 }
 
@@ -49,7 +50,18 @@ export interface IInputProps {
   key: string;
   item: IItem;
   renderCondition?: string;
+  onSelectAction?: string[];
   fieldFormikElement?: IFieldFormikElement;
+}
+
+export interface ICta {
+  title: string;
+  css: Object;
+}
+
+export interface IConfig {
+  configFields: IInputProps[];
+  cta: ICta;
 }
 
 export interface IFormElementsProps extends IInputProps {

@@ -1,4 +1,8 @@
-import { IInputProps } from "../features/configRendering/FormElements";
+import {
+  IConfig,
+  ICta,
+  IInputProps,
+} from "../features/configRendering/FormElements";
 
 const accommodationList = [
   { key: 1, label: "Towels" },
@@ -111,7 +115,7 @@ export const configFields: IInputProps[] = [
     fieldFormikElement: {
       initialValue: undefined,
       validationType: "string",
-      fieldValidation: [{ type: "string", params: ["Option is required"] }],
+      fieldValidation: [{ type: "required", params: ["Option is required"] }],
     },
   },
   {
@@ -130,10 +134,6 @@ export const configFields: IInputProps[] = [
       validationType: "number",
       fieldValidation: [
         {
-          type: "required",
-          params: ["Amount is required"],
-        },
-        {
           type: "when",
           params: [
             "foodService",
@@ -141,14 +141,12 @@ export const configFields: IInputProps[] = [
               is: "yes",
               then: [
                 {
-                  type: "min",
-                  params: [200],
+                  type: "required",
+                  params: ["Option is required"],
                 },
-              ],
-              otherwise: [
                 {
                   type: "min",
-                  params: [100],
+                  params: [200],
                 },
               ],
             },
@@ -170,7 +168,18 @@ export const configFields: IInputProps[] = [
     fieldFormikElement: {
       initialValue: undefined,
       validationType: "string",
-      fieldValidation: [{ type: "string", params: ["Option is required"] }],
+      fieldValidation: [
+        {
+          type: "when",
+          params: [
+            "foodService",
+            {
+              is: "yes",
+              then: [{ type: "required", params: ["Option is required"] }],
+            },
+          ],
+        },
+      ],
     },
   },
   {
@@ -182,11 +191,41 @@ export const configFields: IInputProps[] = [
       fieldtype: "multiselect",
       id: "accommodations",
       options: accommodationList,
+      isMultiSelect: true,
     },
-    fieldFormikElement: {
-      initialValue: [],
-      validationType: "string",
-      fieldValidation: [{ type: "string", params: ["Option is required"] }],
-    },
+    onSelectAction: ["formikData.values"],
+    // fieldFormikElement: {
+    //   initialValue: [],
+    //   validationType: "array",
+    //   fieldValidation: [
+    //     {
+    //       type: "when",
+    //       params: [
+    //         "foodService",
+    //         {
+    //           is: "yes",
+    //           then: [
+    //             {
+    //               type: "min",
+    //               params: [1, "Please select at least one option"],
+    //             },
+    //             { type: "required", params: ["Option is required"] },
+    //           ],
+    //         },
+    //       ],
+    //     },
+    //   ],
+    // },
   },
 ];
+
+const cta: ICta = {
+  title: "Submit",
+  css: {
+    alignSelf: "center",
+    width: 70,
+    backgroundColor: "#F15927",
+  },
+};
+
+export const screenConfig: IConfig = { configFields: configFields, cta: cta };

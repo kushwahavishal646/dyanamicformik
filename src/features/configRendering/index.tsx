@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { FormikProps, useFormik } from "formik";
 import * as yup from "yup";
 
 import FormElements from "./FormElements";
 import useStyles from "./styles";
-import { configFields } from "../../config/componentConfig";
+import { configFields, screenConfig } from "../../config/componentConfig";
 import createYupSchema from "../../utils/yup";
 
 const ConfigRendering: React.FunctionComponent = () => {
@@ -18,7 +18,7 @@ const ConfigRendering: React.FunctionComponent = () => {
   useEffect(() => {
     const formikFields: Record<string, any> = {};
 
-    configFields.forEach((item) => {
+    screenConfig.configFields.forEach((item) => {
       if (item.item.name && item.fieldFormikElement) {
         formikFields[item.item.name] = item.fieldFormikElement?.initialValue;
       }
@@ -27,7 +27,6 @@ const ConfigRendering: React.FunctionComponent = () => {
       createYupSchema,
       {} as Record<string, any>
     );
-    console.log(yupSchema);
     setValidationSchema(yup.object().shape(yupSchema));
     setFields(formikFields);
   }, [configFields]);
@@ -41,9 +40,9 @@ const ConfigRendering: React.FunctionComponent = () => {
   });
 
   return (
-    !!configFields && (
+    !!screenConfig.configFields && (
       <Box sx={classes.container}>
-        {configFields.map(
+        {screenConfig.configFields.map(
           (item, index) =>
             (item.renderCondition === undefined ||
               eval(item.renderCondition)) && (
@@ -53,6 +52,15 @@ const ConfigRendering: React.FunctionComponent = () => {
                 formikData={formikData}
               />
             )
+        )}
+        {!!screenConfig.cta && (
+          <Button
+            variant="contained"
+            disabled={!formikData.isValid || !formikData.dirty}
+            sx={screenConfig.cta.css}
+          >
+            {screenConfig.cta.title}
+          </Button>
         )}
       </Box>
     )

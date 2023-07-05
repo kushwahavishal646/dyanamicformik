@@ -11,14 +11,18 @@ const VKTextField: React.FunctionComponent<IFormElementsProps> = (props) => {
 
   const handleFieldBlur = () => formikData.setFieldTouched(item.name);
 
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    return formikData.setFieldValue(item.name, event.target.value);
+  };
+
   return (
     <>
       <TextField
         {...item}
         value={formikData.values[item.name] ?? ""}
-        onChange={(event) =>
-          formikData.setFieldValue(item.name, event.target.value)
-        }
+        onChange={handleChange}
         onBlur={handleFieldBlur}
         error={formikData.touched[item.name] && !!formikData.errors[item.name]}
         sx={{ marginY: 2 }}

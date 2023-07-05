@@ -6,6 +6,10 @@ const useStyles = () => ({
     marginX: 60,
     marginY: 5,
   },
+  button: {
+    alignSelf: "center",
+    width: 50,
+  },
 });
 
 export default useStyles;
