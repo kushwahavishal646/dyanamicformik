@@ -1,3 +1,12 @@
+# Screenshots
+
+level_2_config_development
+
+<img width="1792" alt="Screenshot 2023-10-28 at 6 07 28 PM" src="https://github.com/kushwahavishal646/dyanamicformik/assets/69454547/7560483b-f56f-486c-90d7-eef5510ef610">
+
+<img width="1792" alt="Screenshot 2023-10-28 at 6 07 19 PM" src="https://github.com/kushwahavishal646/dyanamicformik/assets/69454547/dc0a08ca-0f89-4f3e-9a15-3d992f550bca">
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
