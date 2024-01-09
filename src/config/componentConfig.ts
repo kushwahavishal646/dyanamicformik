@@ -194,28 +194,28 @@ export const configFields: IInputProps[] = [
       isMultiSelect: true,
     },
     onSelectAction: ["formikData.values"],
-    // fieldFormikElement: {
-    //   initialValue: [],
-    //   validationType: "array",
-    //   fieldValidation: [
-    //     {
-    //       type: "when",
-    //       params: [
-    //         "foodService",
-    //         {
-    //           is: "yes",
-    //           then: [
-    //             {
-    //               type: "min",
-    //               params: [1, "Please select at least one option"],
-    //             },
-    //             { type: "required", params: ["Option is required"] },
-    //           ],
-    //         },
-    //       ],
-    //     },
-    //   ],
-    // },
+    fieldFormikElement: {
+      initialValue: [],
+      // validationType: "array",
+      //   fieldValidation: [
+      //     {
+      //       type: "when",
+      //       params: [
+      //         "foodService",
+      //         {
+      //           is: "yes",
+      //           then: [
+      //             {
+      //               type: "min",
+      //               params: [1, "Please select at least one option"],
+      //             },
+      //             { type: "required", params: ["Option is required"] },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //   ],
+    },
   },
 ];
 
