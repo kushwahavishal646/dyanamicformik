@@ -1,6 +1,12 @@
 import React from "react";
 
-import { FormControlLabel, Radio, RadioGroup, Typography } from "@mui/material";
+import {
+  Box,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  Typography,
+} from "@mui/material";
 
 import useStyles from "./styles";
 import { IFormElementsProps } from "../../features/configRendering/FormElements";
@@ -18,7 +24,7 @@ const VKRadioGroup: React.FunctionComponent<IFormElementsProps> = (props) => {
   };
 
   return (
-    <>
+    <Box>
       <h5>{item.label}</h5>
       <RadioGroup
         aria-label={item.name}
@@ -41,7 +47,7 @@ const VKRadioGroup: React.FunctionComponent<IFormElementsProps> = (props) => {
           {`${formikData.errors[item.name]}`}
         </Typography>
       )}
-    </>
+    </Box>
   );
 };
 

@@ -58,8 +58,8 @@ const VKMultiselect: React.FunctionComponent<IFormElementsProps> = (props) => {
   };
 
   return (
-    <>
-      <FormControl sx={classes.formControl}>
+    <Box>
+      <FormControl sx={(classes.formControl, item.sx)}>
         <FormLabel id="multiple-select-label">{item.label}</FormLabel>
         <Select
           labelId={`label-${item.id}`}
@@ -71,6 +71,7 @@ const VKMultiselect: React.FunctionComponent<IFormElementsProps> = (props) => {
           input={<Input id={`select-chip-${item.id}`} />}
           renderValue={renderValue}
           MenuProps={MenuProps}
+          disabled={item.disabled}
         >
           {item.options?.map((option) => (
             <MenuItem key={option.key} value={option.label}>
@@ -84,7 +85,7 @@ const VKMultiselect: React.FunctionComponent<IFormElementsProps> = (props) => {
           formikData.errors[item.name]
         }`}</Typography>
       )}
-    </>
+    </Box>
   );
 };
 

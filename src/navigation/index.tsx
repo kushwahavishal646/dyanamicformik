@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar.tsx";
 import Cart from "../features/cart";
 import Checkout from "../features/checkout";
 import ConfigRendering from "../features/configRendering";
+import IMForm from "../features/imForm";
 import Shop from "../features/shop";
 
 const RootNavigation: React.FunctionComponent = () => {
@@ -12,10 +13,11 @@ const RootNavigation: React.FunctionComponent = () => {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Shop />} />
+        <Route path="/" element={<IMForm />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/configRendering" element={<ConfigRendering />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/config" element={<ConfigRendering />} />
       </Routes>
     </BrowserRouter>
   );

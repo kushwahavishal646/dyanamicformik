@@ -39,11 +39,12 @@ export interface IItem {
     step?: number;
     maxLength?: number;
   };
+  disabled?: boolean;
   fullWidth?: boolean;
   autoFocus?: boolean;
   options?: IRadioOption[];
   isMultiSelect?: boolean;
-  sx?: object;
+  sx?: any;
 }
 
 export interface IInputProps {
@@ -62,6 +63,8 @@ export interface ICta {
 export interface IConfig {
   configFields: IInputProps[];
   cta: ICta;
+  rootFormCss?: Object;
+  inputFormCss?: Object;
 }
 
 export interface IFormElementsProps extends IInputProps {

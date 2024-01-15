@@ -1,10 +1,8 @@
 const useStyles = () => ({
   container: {
-    width: 550,
+    flex: 1,
     display: "flex",
     flexDirection: "column",
-    marginX: 60,
-    marginY: 5,
   },
   button: {
     alignSelf: "center",

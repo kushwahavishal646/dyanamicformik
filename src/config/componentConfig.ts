@@ -191,7 +191,6 @@ export const configFields: IInputProps[] = [
       fieldtype: "multiselect",
       id: "accommodations",
       options: accommodationList,
-      isMultiSelect: true,
     },
     onSelectAction: ["formikData.values"],
     fieldFormikElement: {

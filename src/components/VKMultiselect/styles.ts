@@ -2,7 +2,7 @@ import theme from "../../config/theme";
 
 const useStyles = () => ({
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(0, 0, 1, 0),
     display: "flex",
   },
   chips: {

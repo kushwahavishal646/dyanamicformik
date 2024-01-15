@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 
 import useStyles from "./styles";
 import { IFormElementsProps } from "../../features/configRendering/FormElements";
@@ -18,21 +18,21 @@ const VKTextField: React.FunctionComponent<IFormElementsProps> = (props) => {
   };
 
   return (
-    <>
+    <Box>
       <TextField
         {...item}
         value={formikData.values[item.name] ?? ""}
         onChange={handleChange}
         onBlur={handleFieldBlur}
         error={formikData.touched[item.name] && !!formikData.errors[item.name]}
-        sx={{ marginY: 2 }}
+        sx={item.sx}
       />
       {!!formikData.touched[item.name] && !!formikData.errors[item.name] && (
         <Typography sx={[classes.text, classes.error]}>
           {`${formikData.errors[item.name]}`}
         </Typography>
       )}
-    </>
+    </Box>
   );
 };
 
