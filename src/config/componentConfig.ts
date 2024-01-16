@@ -192,7 +192,6 @@ export const configFields: IInputProps[] = [
       id: "accommodations",
       options: accommodationList,
     },
-    onSelectAction: ["formikData.values"],
     fieldFormikElement: {
       initialValue: [],
       // validationType: "array",

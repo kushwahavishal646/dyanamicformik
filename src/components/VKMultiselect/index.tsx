@@ -36,11 +36,7 @@ const VKMultiselect: React.FunctionComponent<IFormElementsProps> = (props) => {
     const selectedValues = item.isMultiSelect
       ? (event.target.value as string[])
       : (event.target.value as string);
-    if (props.onSelectAction?.length !== 0) {
-      props.onSelectAction?.forEach((selectAction) => {
-        eval(`${selectAction}`);
-      });
-    }
+
     return formikData.setFieldValue(item.name, selectedValues);
   };
 
