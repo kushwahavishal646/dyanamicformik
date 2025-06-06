@@ -1,23 +1,37 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Provider } from "react-redux";
-
 import { StyledEngineProvider, ThemeProvider } from "@mui/material";
 
 import theme from "./config/theme";
 import { ShopContextProvider } from "./context/shopContext";
-import RootNavigation from "./navigation";
 import RootStore from "./store";
-import "../src/localization";
-import "../src/config/i18n";
-import "./App.css";
+import ErrorBoundary from "./components/ErrorBoundary";
+import LoadingFallback from "./components/LoadingFallback";
 
-const App: React.FunctionComponent = () => {
+// Lazy load RootNavigation component with chunk naming
+const RootNavigation = lazy(() =>
+  import(/* webpackChunkName: "root-navigation" */ "./navigation")
+);
+
+const AppContent: React.FC = () => {
+  return (
+    <ErrorBoundary>
+      <Suspense fallback={<LoadingFallback />}>
+        <RootNavigation />
+      </Suspense>
+    </ErrorBoundary>
+  );
+};
+
+AppContent.displayName = 'AppContent';
+
+const App: React.FC = () => {
   return (
     <Provider store={RootStore}>
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
           <ShopContextProvider>
-            <RootNavigation />
+            <AppContent />
           </ShopContextProvider>
         </ThemeProvider>
       </StyledEngineProvider>

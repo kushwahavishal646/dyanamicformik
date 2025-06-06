@@ -1,24 +1,29 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Navbar from "../components/Navbar.tsx";
-import Cart from "../features/cart";
-import Checkout from "../features/checkout";
-import ConfigRendering from "../features/configRendering";
-import IMForm from "../features/imForm";
-import Shop from "../features/shop";
+import LoadingFallback from "../components/LoadingFallback";
 
-const RootNavigation: React.FunctionComponent = () => {
+// Lazy load route components
+const Cart = lazy(() => import(/* webpackChunkName: "cart" */ "../features/cart"));
+const Checkout = lazy(() => import(/* webpackChunkName: "checkout" */ "../features/checkout"));
+const ConfigRendering = lazy(() => import(/* webpackChunkName: "config" */ "../features/configRendering"));
+const IMForm = lazy(() => import(/* webpackChunkName: "imform" */ "../features/imForm"));
+const Shop = lazy(() => import(/* webpackChunkName: "shop" */ "../features/shop"));
+
+const RootNavigation: React.FC = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<IMForm />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/config" element={<ConfigRendering />} />
-      </Routes>
+      <Suspense fallback={<LoadingFallback />}>
+        <Routes>
+          <Route path="/" element={<IMForm />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/config" element={<ConfigRendering />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 };
