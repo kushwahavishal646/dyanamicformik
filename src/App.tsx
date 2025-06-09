@@ -8,8 +8,9 @@ import { ShopContextProvider } from "./context/shopContext";
 import RootNavigation from "./navigation";
 import RootStore from "./store";
 import "../src/localization";
-import "../src/config/i18n";
+import "./config/i18n";
 import "./App.css";
+
 
 const App: React.FunctionComponent = () => {
   return (
