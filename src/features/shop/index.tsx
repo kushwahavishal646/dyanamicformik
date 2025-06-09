@@ -8,7 +8,7 @@ import Product from "./Product";
 import useStyles from "./style";
 
 const Shop: React.FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const classes = useStyles();
 
   const productList = useMemo(() =>

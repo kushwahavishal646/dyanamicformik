@@ -14,16 +14,20 @@ i18n
     ...langSetupOptions,
     lng: "en",
     fallbackLng: "en",
-    debug: true,
+    debug: process.env.NODE_ENV === 'development',
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
       formatSeparator: ",",
     },
     react: {
       useSuspense: true,
+      bindI18n: 'languageChanged loaded',
+      bindI18nStore: 'added removed',
+      transEmptyNodeValue: '',
     },
   })
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  .catch((err) => {});
+  .catch((err) => {
+    console.error('Error initializing i18next:', err);
+  });
 
 export default i18n;

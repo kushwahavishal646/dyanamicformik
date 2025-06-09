@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { addToCart } from "../../../redux/action";
 import { useTypedSelector } from "../../../store";
+import OptimizedImage from "../../../components/OptimizedImage";
 import "./product.css";
 
 export interface IProduct {
@@ -27,11 +28,12 @@ const Product: React.FC<IProduct> = (props) => {
 
   return (
     <div className="productContainer">
-      <img
+      <OptimizedImage
         src={props.productImage}
         alt={props.productName}
         className="productImage"
-        loading="lazy"
+        width={200}
+        height={200}
       />
       <div className="description">
         <p className="productName">

@@ -9,6 +9,7 @@ import {
 } from "../../../redux/action";
 import { useTypedSelector } from "../../../store";
 import { IProduct } from "../../shop/Product";
+import OptimizedImage from "../../../components/OptimizedImage";
 import "./cartItem.css";
 
 const CartItem: React.FC<IProduct> = (props) => {
@@ -39,7 +40,12 @@ const CartItem: React.FC<IProduct> = (props) => {
 
   return (
     <div className="cartItem">
-      <img src={props.productImage} alt={props.productName} />
+      <OptimizedImage
+        src={props.productImage}
+        alt={props.productName}
+        width={150}
+        height={150}
+      />
       <div className="description">
         <p>
           <b>{props.productName}</b>
@@ -52,6 +58,7 @@ const CartItem: React.FC<IProduct> = (props) => {
             min="0"
             value={cartItems[props.id]}
             onChange={updateCartItemCount}
+            aria-label={String(t("quantity"))}
           />
           <button onClick={addItemToCart}> + </button>
         </div>

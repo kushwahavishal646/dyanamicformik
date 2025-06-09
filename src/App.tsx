@@ -7,6 +7,7 @@ import { ShopContextProvider } from "./context/shopContext";
 import RootStore from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
 import LoadingFallback from "./components/LoadingFallback";
+import "./config/i18n"; // Import i18n configuration
 
 // Lazy load RootNavigation component with chunk naming
 const RootNavigation = lazy(() =>

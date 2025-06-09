@@ -15,14 +15,13 @@ export const getDefaultCart = () => {
 };
 
 export const getTotalCartAmount = (cartItems: ICart) => {
-  let totalAmount = 0;
-  for (const item in cartItems) {
-    if (cartItems[item] > 0) {
-      let itemInfo = PRODUCTS.find((product) => product.id === Number(item));
-      totalAmount += cartItems[item] * (itemInfo?.price ?? 0);
+  return Object.entries(cartItems).reduce((total, [itemId, quantity]) => {
+    if (quantity > 0) {
+      const itemInfo = PRODUCTS.find((product) => product.id === Number(itemId));
+      return total + quantity * (itemInfo?.price ?? 0);
     }
-  }
-  return totalAmount;
+    return total;
+  }, 0);
 };
 
 export const modifyCart = (
